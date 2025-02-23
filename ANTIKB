@@ -2,7 +2,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
     Name = "Swwerty HUB beta",
-    Icon = 14577807372, 
+    Icon = 139169473079928, 
     LoadingTitle = "by skaneexx",
     LoadingSubtitle = "Loading...",
     Theme = "Defolt", 
