@@ -202,3 +202,16 @@ game:GetService("UserInputService").InputBegan:Connect(onInputBegan)
 loadstring(game:HttpGet("https://pastebin.com/raw/WP32zNSa"))()
     end,
  })
+
+  local Button = MainTab:CreateButton({
+    Name = "Reset",
+    Callback = function()     
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local humanoid = character:FindFirstChild("Humanoid")
+
+if humanoid then
+  humanoid.Health = 0 
+end
+    end,
+ })
