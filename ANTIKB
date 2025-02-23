@@ -79,7 +79,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/
     end,
  })
  
- local MainTab = Window:CreateTab("Universal Scripts", 14577807372) -- Title, Image
+ local MainTab = Window:CreateTab("Universal functions", 14577807372) -- Title, Image
  local MainSection = MainTab:CreateSection("Main")
 
  local Button = MainTab:CreateButton({
@@ -220,5 +220,12 @@ end
     Name = "Fullbright",
     Callback = function()     
 loadstring(game:HttpGet("https://pastebin.com/raw/ZdyDttMz"))()
+    end,
+ })
+
+  local Button = MainTab:CreateButton({
+    Name = "Infinite jump",
+    Callback = function()     
+loadstring(game:HttpGet("https://pastebin.com/raw/ycK5uYHW"))()
     end,
  })
