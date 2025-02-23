@@ -215,3 +215,10 @@ if humanoid then
 end
     end,
  })
+
+  local Button = MainTab:CreateButton({
+    Name = "Fullbright",
+    Callback = function()     
+loadstring(game:HttpGet("https://pastebin.com/raw/ZdyDttMz"))()
+    end,
+ })
