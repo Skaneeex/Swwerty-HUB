@@ -1,0 +1,204 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Swwerty HUB beta",
+    Icon = 14577807372, 
+    LoadingTitle = "by skaneexx",
+    LoadingSubtitle = "Loading...",
+    Theme = "Defolt", 
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false, 
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = skaneexx,
+       FileName = "Big Hub"
+    },
+    Discord = {
+       Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
+       Invite = "https://discord.gg/tPgrga6J", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+    },
+ 
+    KeySystem = true, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Untitled",
+       Subtitle = "Key System",
+       Note = "Get Key discord.gg/ZMHrjFEq4N", -- Use this to tell the user how to get a key
+       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+       SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = {"ANTI KB"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+    }
+ })
+
+ local MainTab = Window:CreateTab("Aimbot", 14577807372) -- Title, Image
+ local MainSection = MainTab:CreateSection("Main")
+
+ Rayfield:Notify({
+    Title = "Welcome!",
+    Content = "Добро пожаловать в Swwerty HUB :)",
+    Duration = 3,
+    Image = 14577807372,
+ })
+ 
+local Button = MainTab:CreateButton({
+    Name = "AzureModded",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+    end,
+ })
+ 
+  local Button = MainTab:CreateButton({
+    Name = "Chants",
+    Callback = function()     
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vexalotl/Chants/refs/heads/main/main"))()
+    end,
+ })
+ 
+  local Button = MainTab:CreateButton({
+    Name = "AirHub",
+    Callback = function()     
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+    end,
+ })
+ 
+  local Button = MainTab:CreateButton({
+    Name = "MoonuxHub",
+    Callback = function()     
+loadstring(game:HttpGet("https://gist.githubusercontent.com/MoonDevRed/bab15fe38d5822339e075c51c1b74fed/raw/9fa5e7839d7fcf2240955a6ff90397e746796c98/MoonuxHub(V1.2)%20Updated%20.lua"))()
+    end,
+ })
+ 
+ local MainTab = Window:CreateTab("Esp", 14577807372) -- Title, Image
+ local MainSection = MainTab:CreateSection("Main")
+ 
+  local Button = MainTab:CreateButton({
+    Name = "ESP",
+    Callback = function()     
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
+    end,
+ })
+ 
+ local MainTab = Window:CreateTab("Universal Scripts", 14577807372) -- Title, Image
+ local MainSection = MainTab:CreateSection("Main")
+
+ local Button = MainTab:CreateButton({
+    Name = "Rejoin",
+    Callback = function()     
+local ts = game:GetService("TeleportService")
+
+local p = game:GetService("Players").LocalPlayer
+
+ 
+
+ts:Teleport(game.PlaceId, p)
+    end,
+ })
+ 
+ local Button = MainTab:CreateButton({
+    Name = "infinity yield",
+    Callback = function()     
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end,
+ })
+ 
+local Button = MainTab:CreateButton({
+    Name = "Chat SPY",
+    Callback = function()
+--roblox chat spy script
+--This script reveals ALL hidden messages in the default chat
+--chat "/spy" to toggle!
+enabled = true
+--if true will check your messages too
+spyOnMyself = true
+--if true will chat the logs publicly (fun, risky)
+public = false
+--if true will use /me to stand out
+publicItalics = true
+--customize private logs
+privateProperties = {
+	Color = Color3.fromRGB(0,255,255); 
+	Font = Enum.Font.SourceSansBold;
+	TextSize = 18;
+}
+--////////////////////////////////////////////////////////////////
+local StarterGui = game:GetService("StarterGui")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local saymsg = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+local getmsg = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("OnMessageDoneFiltering")
+local instance = (_G.chatSpyInstance or 0) + 1
+_G.chatSpyInstance = instance
+
+local function onChatted(p,msg)
+	if _G.chatSpyInstance == instance then
+		if p==player and msg:lower():sub(1,4)=="/spy" then
+			enabled = not enabled
+			wait(0.3)
+			privateProperties.Text = "{SKANEEXX SPY "..(enabled and "EN" or "DIS").."ABLED}"
+			StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+		elseif enabled and (spyOnMyself==true or p~=player) then
+			msg = msg:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ')
+			local hidden = true
+			local conn = getmsg.OnClientEvent:Connect(function(packet,channel)
+				if packet.SpeakerUserId==p.UserId and packet.Message==msg:sub(#msg-#packet.Message+1) and (channel=="All" or (channel=="Team" and public==false and Players[packet.FromSpeaker].Team==player.Team)) then
+					hidden = false
+				end
+			end)
+			wait(1)
+			conn:Disconnect()
+			if hidden and enabled then
+				if public then
+					saymsg:FireServer((publicItalics and "/me " or '').."{SPY} [".. p.Name .."]: "..msg,"All")
+				else
+					privateProperties.Text = "{SPY} [".. p.Name .."]: "..msg
+					StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+				end
+			end
+		end
+	end
+end
+
+for _,p in ipairs(Players:GetPlayers()) do
+	p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+end
+Players.PlayerAdded:Connect(function(p)
+	p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+end)
+privateProperties.Text = "{SKANEEXX SPY "..(enabled and "EN" or "DIS").."ABLED}"
+StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+local chatFrame = player.PlayerGui.Chat.Frame
+chatFrame.ChatChannelParentFrame.Visible = true
+chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
+    end,
+ })
+
+  local Button = MainTab:CreateButton({
+    Name = "TP 50 STUDS FORWARD (Bind V)",
+    Callback = function()     
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+local teleportDistance = 50
+
+local function onInputBegan(input, gameProcessedEvent)
+    if gameProcessedEvent then return end
+    if input.KeyCode == Enum.KeyCode.V then
+        local currentPosition = humanoidRootPart.Position
+        local forwardDirection = humanoidRootPart.CFrame.LookVector
+        local newPosition = currentPosition + forwardDirection * teleportDistance
+        humanoidRootPart.CFrame = CFrame.new(newPosition)
+    end
+end
+
+game:GetService("UserInputService").InputBegan:Connect(onInputBegan)
+    end,
+ })
+
+  local Button = MainTab:CreateButton({
+    Name = "TP 500 STUDS UP (Bind B)",
+    Callback = function()     
+loadstring(game:HttpGet("https://pastebin.com/raw/WP32zNSa"))()
+    end,
+ })
