@@ -15,7 +15,7 @@ local Window = Rayfield:CreateWindow({
     },
     Discord = {
        Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
-       Invite = "discord.gg/ZMHrjFEq4N", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+       Invite = "discord.gg/tPgrga6J", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
        RememberJoins = true -- Set this to false to make them join the discord every time they load it up
     },
  
@@ -76,6 +76,16 @@ loadstring(game:HttpGet("https://gist.githubusercontent.com/MoonDevRed/bab15fe38
     Name = "ESP",
     Callback = function()     
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
+    end,
+ })
+ 
+ local MainTab = Window:CreateTab("Guns", 14577807372) -- Title, Image
+ local MainSection = MainTab:CreateSection("Soon...")
+ 
+  local Button = MainTab:CreateButton({
+    Name = "Soon!",
+    Callback = function()     
+
     end,
  })
  
