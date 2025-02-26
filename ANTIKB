@@ -119,6 +119,33 @@ loadstring(game:HttpGet("https://pastebin.com/raw/ycK5uYHW"))()
     end,
  })
 
+   local Button = MainTab:CreateButton({
+    Name = "Auto jump",
+    Callback = function()     
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local humanoid = character:FindFirstChild("Humanoid")
+local jumping = false
+
+if humanoid then
+  local function Jump()
+    if not jumping then
+      jumping = true
+      humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+      wait(0.1)
+      jumping = false
+    end
+  end
+
+  game:GetService("RunService").RenderStepped:Connect(function()
+    if humanoid.FloorMaterial ~= Enum.Material.Air and not jumping then
+        Jump()
+    end
+  end)
+end
+    end,
+ })
+
   local Button = MainTab:CreateButton({
     Name = "Reset",
     Callback = function()     
@@ -133,12 +160,16 @@ end
  })
 
  local MainTab = Window:CreateTab("Guns", 4483362458) -- Title, Image
- local MainSection = MainTab:CreateSection("Soon...")
+ local MainSection = MainTab:CreateSection("Main")
  
   local Button = MainTab:CreateButton({
-    Name = "Soon!",
+    Name = "No Recoil",
     Callback = function()     
-
+local CurrentFocus = game:GetService("Workspace").CurrentCamera.CFrame
+game:GetService("Workspace").CurrentCamera:Destroy()
+local Instance = Instance.new("Camera", game:GetService("Workspace"))
+Instance.CameraSubject = game:GetService("Players").LocalPlayer.Character.Humanoid
+Instance.CameraType = Enum.CameraType.Custom
     end,
  })
  
