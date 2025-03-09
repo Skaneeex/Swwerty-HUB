@@ -3,3 +3,15 @@ Title = "discord.gg/ZMHrjFEq4N",
 Text = "Чтобы получить новый ключ и скрипт, зайдите на данный сервак (старый скрипт был отключён)",
 Duration = 5,
 })
+
+game.StarterGui:SetCore("SendNotification", {
+Title = "discord.gg/ZMHrjFEq4N",
+Text = "Чтобы получить новый ключ и скрипт, зайдите на данный сервак (старый скрипт был отключён)",
+Duration = 5,
+})
+
+game.StarterGui:SetCore("SendNotification", {
+Title = "discord.gg/ZMHrjFEq4N",
+Text = "Чтобы получить новый ключ и скрипт, зайдите на данный сервак (старый скрипт был отключён)",
+Duration = 5,
+})
